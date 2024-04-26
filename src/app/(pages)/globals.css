@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    @apply text-neutral-800 m-0 p-0 box-border antialiased 
+}
+
+:root{
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust:100%;
+}
+
+.prevent-select{
+    user-select: none;
+}
+
+.select-nome {  
+   user-select: none;
+   -moz-user-select: none;
+   -webkit-user-drag: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+body::-webkit-scrollbar {
+    width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+
+    @apply bg-neutral-50
+  
+}
+
+body::-webkit-scrollbar-thumb {
+    @apply bg-roxo
+
+}
