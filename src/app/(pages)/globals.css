@@ -18,7 +18,7 @@
     user-select: none;
 }
 
-.select-nome {  
+.select-none {  
    user-select: none;
    -moz-user-select: none;
    -webkit-user-drag: none;
@@ -46,4 +46,20 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     @apply bg-roxo
 
+}
+
+.overflow-y-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+   @apply bg-roxo/30
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

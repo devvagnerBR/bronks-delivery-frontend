@@ -11,14 +11,14 @@ export default function SelectSize() {
 
     const search = searchParams.get( 'tamanho' )
 
-
     const router = useRouter()
-    const [size, setSize] = React.useState( 'g' )
 
     function handleSetSize( size: string ) {
-        router.push( `/#menu?tamanho=${size}`
-         )
+        router.push( `/?tamanho=${size}#menu`
+        )
     }
+
+
 
     return (
         <label className="flex gap-2 flex-col items-end text-sm text-neutral-500">
@@ -26,7 +26,6 @@ export default function SelectSize() {
             <select
                 defaultValue={search!}
                 onChange={( e ) => {
-                    setSize( e.target.value )
                     handleSetSize( e.target.value )
                 }
                 }

@@ -10,3 +10,8 @@ export interface ProductInterface {
     isAvailable: boolean;
     createdAt: string;
 }
+
+export interface ProductInterfaceWithQuantity extends ProductInterface {
+    quantity: number;
+    size?: string
+}

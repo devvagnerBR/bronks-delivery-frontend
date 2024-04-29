@@ -11,6 +11,7 @@ interface ProductsWrapperProps {
 
 export default async function ProductsWrapper( { products }: ProductsWrapperProps ) {
 
+
     return (
         <Suspense>
             <Wrapper>
@@ -20,9 +21,6 @@ export default async function ProductsWrapper( { products }: ProductsWrapperProp
                         <SelectSize />
                     </div>
                     <div className="flex items-center justify-center gap-4 flex-wrap mt-8">
-                        {products.map( ( product: ProductInterface ) => <Product key={product.id} product={product} /> )}
-                        {products.map( ( product: ProductInterface ) => <Product key={product.id} product={product} /> )}
-                        {products.map( ( product: ProductInterface ) => <Product key={product.id} product={product} /> )}
                         {products.map( ( product: ProductInterface ) => <Product key={product.id} product={product} /> )}
                     </div>
                 </div>

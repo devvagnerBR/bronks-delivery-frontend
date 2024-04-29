@@ -1,16 +1,18 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  mode: "jit",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
+    // '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
+    "!./node_modules"
   ],
   theme: {
     extend: {
-      screens:{
-        'xms':'400px'
+      screens: {
+        'xms': '400px'
       },
       colors: {
         'roxo': "#8047F8"

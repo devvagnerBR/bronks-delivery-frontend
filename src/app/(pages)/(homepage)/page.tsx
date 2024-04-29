@@ -13,7 +13,6 @@ export default async function Home( { searchParams }: HomeProps ) {
 
   const products = await getProducts();
 
-
   const productsWithSize = products.map( ( product ) => {
     let newProduct = { ...product }
 

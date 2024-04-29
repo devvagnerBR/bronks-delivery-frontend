@@ -2,9 +2,10 @@
 
 import { ProductInterface } from "@/types/products"
 import { baseUrl } from "@/utils/base-url"
+import { cache } from "react"
 
 
-export async function getProducts() {
+export const getProducts = cache( async () => {
 
     const response = await fetch( `${baseUrl}/company/product/list`, {
         method: 'GET',
@@ -13,14 +14,11 @@ export async function getProducts() {
         },
         next: {
             tags: ['products'],
-            revalidate: 60
+            revalidate: 60 * 60 * 24 // 24 hours
         }
     } )
 
     const data = await response.json() as ProductInterface[]
     return data
 
-
-
-
-}
+} )

@@ -21,14 +21,14 @@ export default async function Hero() {
                                 <Basket weight="fill" className="fill-amber-600" size={18} />
                             </div>
 
-                            <p className="text-neutral-600 select-nome max-md:text-sm">Compra simples e segura</p>
+                            <p className="text-neutral-600 select-none max-md:text-sm">Compra simples e segura</p>
                         </div>
 
                         <div className="flex gap-2 w-full items-center max-xms:items-center max-xms:justify-start">
                             <div className="h-8 w-8  shrink-0 flex items-center justify-center rounded-lg bg-amber-200">
                                 <Basket weight="fill" className="fill-amber-600" size={18} />
                             </div>
-                            <p className="text-neutral-600 select-nome max-md:text-sm">Diversas forma de pagamento</p>
+                            <p className="text-neutral-600 select-none max-md:text-sm">Diversas forma de pagamento</p>
                         </div>
 
                     </div>
@@ -40,7 +40,7 @@ export default async function Hero() {
                             <div className="h-8 w-8  shrink-0 flex items-center justify-center rounded-lg bg-amber-200">
                                 <Basket weight="fill" className="fill-amber-600" size={18} />
                             </div>
-                            <p className="text-neutral-600 select-nome max-md:text-sm">Entregas rápidas</p>
+                            <p className="text-neutral-600 select-none max-md:text-sm">Entregas rápidas</p>
                         </div>
 
 
@@ -48,7 +48,7 @@ export default async function Hero() {
                             <div className="h-8 w-8  shrink-0 flex items-center justify-center rounded-lg bg-roxo">
                                 <Basket weight="fill" className="fill-white" size={18} />
                             </div>
-                            <p className="text-neutral-600 select-nome max-md:text-sm">A comida chega quente até você </p>
+                            <p className="text-neutral-600 select-none max-md:text-sm">A comida chega quente até você </p>
                         </div>
 
 
