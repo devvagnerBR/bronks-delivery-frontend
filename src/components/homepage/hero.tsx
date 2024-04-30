@@ -1,5 +1,7 @@
 import Wrapper from "@/components/wrapper";
-import { Basket } from "@phosphor-icons/react/dist/ssr/Basket"
+import { Basket } from "@phosphor-icons/react/dist/ssr";
+
+
 
 export default async function Hero() {
 
@@ -8,7 +10,7 @@ export default async function Hero() {
     return (
         <Wrapper>
             <div className="w-full max-xms:items-center max-xms:flex max-xms:flex-col">
-                <p className="text-5xl font-bold max-w-[750px] max-md:max-w-none  max-md:text-4xl max-xms:text-center max-xms:text-3xl">Quentinhas saborosas e prontas para mudar o seu dia<span className="text-roxo">!</span></p>
+                <p className="text-6xl font-bold max-w-[950px] max-md:max-w-none  max-md:text-4xl max-xms:text-center max-xms:text-3xl">Quentinhas saborosas e prontas para mudar o seu dia<span className="text-roxo">!</span></p>
 
 
                 <div className="mt-16 max-sm:mt-8 max-w-[750px] flex flex-col gap-4 max-sm:w-full max-xms:w-[90%]">

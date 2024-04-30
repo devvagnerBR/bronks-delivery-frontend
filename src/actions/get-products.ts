@@ -1,8 +1,11 @@
 'use server'
 
-import { ProductInterface } from "@/types/products"
+
+import productMappers from "@/app/(homepage)/product-mappers"
+import { ProductInterface, ProductToDomain } from "@/types/products"
 import { baseUrl } from "@/utils/base-url"
 import { cache } from "react"
+
 
 
 export const getProducts = cache( async () => {
@@ -18,7 +21,9 @@ export const getProducts = cache( async () => {
         }
     } )
 
-    const data = await response.json() as ProductInterface[]
-    return data
+    const data = await response.json()
+
+    const products = data.map( productMappers.toDomain ) as ProductToDomain[];
+    return products
 
 } )
