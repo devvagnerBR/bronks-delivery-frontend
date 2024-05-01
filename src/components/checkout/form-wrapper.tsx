@@ -2,9 +2,8 @@
 
 import { useCheckoutZod } from "@/hooks/use-checkout-zod";
 import { Bank, CreditCard, CurrencyDollarSimple, MapPinLine, Money, PixLogo } from "@phosphor-icons/react";
-import React from "react";
 import { ProductToCart } from "@/types/products";
-import BagItem from "./bag/bag-item";
+import BagItem from "./bag-item";
 
 
 export default function FormWrapper() {
@@ -14,20 +13,19 @@ export default function FormWrapper() {
         handleCheckoutForm,
         register,
         paymentMethod,
-        updateCart,
         itensState,
         totalState,
-        updateStateFromLocalStorage,
-        handlePaymentMethodChange
+        handlePaymentMethodChange,
+        isSubmitting
     } = useCheckoutZod();
 
     return (
         <form
             onSubmit={handleSubmit( handleCheckoutForm )}
             className="min-h-[calc(100vh-447px)] w-full mt-8 flex gap-8 items-start">
-            <div className="w-full">
+            <div className="w-full mt-3 ">
                 <h1 className="font-bold">Complete seu pedido</h1>
-                <div className="p-8 bg-neutral-100 rounded-lg mt-4 w-full max-w-[740px]">
+                <div className="p-8  rounded-lg mt-4 w-full max-w-[640px]">
 
                     <header className="flex flex-col ">
                         <div className="flex flex-col gap-2 w-full ">
@@ -42,7 +40,8 @@ export default function FormWrapper() {
                                 className="mt-4 flex flex-col gap-4 w-full">
                                 <input
                                     id="cep"
-                                    className="bg-neutral-200/40 border border-neutral-200 h-11 max-w-52 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm"
+                                    className="bg-neutral-200/40 border border-neutral-200 h-11 max-w-52 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm
+                                    focus:border-roxo/30"
                                     placeholder="CEP"
                                     maxLength={8}
                                     required
@@ -142,7 +141,7 @@ export default function FormWrapper() {
                 </div>
             </div>
 
-            <div className="w-full">
+            <div className="w-full ">
                 <h1 className="font-bold">Seus itens selecionados</h1>
                 {/* <BagWrapper /> */}
                 <div className="p-8 flex flex-col gap-4 bg-neutral-100 rounded-lg mt-4 pr-4">
@@ -165,11 +164,22 @@ export default function FormWrapper() {
                             <p className="text-lg font-bold text-neutral-600">Total:</p>
                             <p className="text-lg font-bold text-neutral-600">{( totalState.total + 3.50 ).toLocaleString( 'pt-br', { style: 'currency', currency: 'BRL' } )}</p>
                         </div>
-                        <button
-                            type="submit"
-                            className="mt-4 bg-amber-400 p-4 rounded-lg text-neutral-50 font-bold tracking-normal">
-                            CONFIRMAR PEDIDO
-                        </button>
+                        {isSubmitting ?
+                            <div className="mt-4 flex items-center justify-center bg-amber-400/50 h-[55px] disabled:bg-red-400 rounded-lg text-neutral-50 font-bold tracking-normal">
+                                <div className="flex flex-row items-center justify-center gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-roxo/80 animate-bounce [animation-delay:.7s]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-roxo/80 animate-bounce [animation-delay:.6s]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-roxo/80 animate-bounce [animation-delay:.5s]"></div>
+                                </div>
+                            </div> :
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="mt-4 bg-amber-400 p-4 disabled:bg-red-400 rounded-lg text-neutral-50 font-bold tracking-normal">
+                                CONFIRMAR PEDIDO
+                            </button>
+                        }
+
                     </div>
                 </div>
             </div>

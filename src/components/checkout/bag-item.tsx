@@ -36,9 +36,13 @@ export default function BagItem( { item, index }: ItemProps ) {
                     <h4 className="capitalize font-medium text-neutral-800">{item.name}</h4>
                     <h4 className="uppercase font-medium text-sm text-roxo/60 border p-2 leading-none rounded-lg border-roxo/20">{item.price.size}</h4>
                 </div>
-                <div className="flex items-center gap-2 rounded-lg w-fit p-2 px-2 bg-neutral-200 ">
+                <div
+                    onClick={() => handleRemoveFromBag( index )}
+                    className="flex hover:border-roxo/10 border border-transparent cursor-pointer items-center gap-2 rounded-lg w-fit p-2 px-2 bg-neutral-200 ">
                     <Trash className="fill-roxo" />
-                    <button onClick={() => handleRemoveFromBag( index )} className=" text-xs  text-neutral-400">REMOVER</button>
+                    <button className=" text-xs  text-neutral-400">
+                        REMOVER
+                    </button>
                 </div>
 
 

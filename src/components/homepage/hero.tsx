@@ -1,4 +1,4 @@
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 import { Basket } from "@phosphor-icons/react/dist/ssr";
 
 

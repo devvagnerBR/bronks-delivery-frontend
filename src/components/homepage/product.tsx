@@ -1,6 +1,7 @@
 'use client'
 
 
+import { useBagFunctions } from "@/hooks/use-bag-functions";
 import { useCheckoutZod } from "@/hooks/use-checkout-zod";
 import { ProductToDomain } from "@/types/products";
 import { Basket } from "@phosphor-icons/react";
@@ -17,7 +18,6 @@ export default function Product( { product }: ProductProps ) {
 
     const searchParams = useSearchParams()
     const size = ( searchParams.get( 'tamanho' ) ?? 'g' ) as 'p' | 'm' | 'g';
-
 
     const { handleAddToBag } = useCheckoutZod();
 

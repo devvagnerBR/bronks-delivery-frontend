@@ -1,5 +1,3 @@
-
-import { cartFunctionalities } from "@/utils/bag";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -7,6 +5,9 @@ import { z } from "zod";
 import { getCEP } from '@/actions/get-cep';
 import { useBag } from "@/context/bag-context";
 import { ProductToCart } from "@/types/products";
+import { useRouter } from "next/navigation";
+import { useBagFunctions } from "./use-bag-functions";
+import { delay } from "@/utils/delay";
 
 const checkoutFormSchema = z.object( {
     cep: z.string().min( 8 ),
@@ -24,11 +25,11 @@ type checkoutData = z.infer<typeof checkoutFormSchema>
 
 export function useCheckoutZod() {
 
-
+    const router = useRouter();
     const { updateCart } = useBag();
-    const { handleAddToBag, handleRemoveFromBag } = cartFunctionalities()
+    const { handleAddToBag, handleRemoveFromBag } = useBagFunctions()
 
-    const [paymentMethod, setPaymentMethod] = React.useState<string>( 'credit' )
+    const [paymentMethod, setPaymentMethod] = React.useState<string>( 'cartão de crédito' )
     const [itens, setItens] = React.useState<ProductToCart[]>( [] );
     const [total, setTotal] = React.useState<number>( 0 );
 
@@ -53,7 +54,21 @@ export function useCheckoutZod() {
 
 
     async function handleCheckoutForm( data: checkoutData ) {
-        console.log( { ...data, paymentMethod } );
+
+
+        await delay( 2000 )
+        const frete = 3.50;
+        const order = {
+            itens: itensState.itens,
+            total: totalState.total + frete,
+            address: data,
+            paymentMethod
+        }
+
+
+        localStorage.setItem( 'pre-order', JSON.stringify( order ) );
+        router.push( '/checkout/confirmacao' )
+
     }
 
 
@@ -115,6 +130,7 @@ export function useCheckoutZod() {
         itensState,
         totalState,
         updateStateFromLocalStorage,
-        handlePaymentMethodChange
+        handlePaymentMethodChange,
+        isSubmitting
     }
 }

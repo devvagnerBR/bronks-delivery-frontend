@@ -1,6 +1,6 @@
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 import { ProductToDomain } from "@/types/products";
-import React, { Suspense } from "react";
+import React from "react";
 import SelectSize from "./select-size";
 import Product from "./product";
 
@@ -12,8 +12,8 @@ interface ProductsWrapperProps {
 export default async function ProductsWrapper( { products }: ProductsWrapperProps ) {
 
 
+
     return (
-        <Suspense>
             <Wrapper>
                 <div className="mt-16 flex flex-col gap-4 w-full" id="menu">
                     <div className="flex items-center justify-between">
@@ -25,6 +25,5 @@ export default async function ProductsWrapper( { products }: ProductsWrapperProp
                     </div>
                 </div>
             </Wrapper>
-        </Suspense>
     );
 }
