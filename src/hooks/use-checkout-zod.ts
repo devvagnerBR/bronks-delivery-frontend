@@ -82,7 +82,7 @@ export function useCheckoutZod() {
 
                 const response = await getCEP( watch( 'cep' ) )
 
-                if ( response.erro ) console.log( 'CEP não encontrado' );
+                if ( response.erro ) return;
                 setValue( 'street', response.logradouro )
                 setValue( 'neighborhood', response.bairro )
                 setValue( 'city', response.localidade )

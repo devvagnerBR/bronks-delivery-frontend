@@ -1,5 +1,6 @@
 'use client'
 import Wrapper from "@/components/common/wrapper";
+import { useConfirmacao } from "@/hooks/use-confirmacao";
 import { ProductToCart } from "@/types/products";
 import { WhatsappLogo } from "@phosphor-icons/react";
 import React from "react";
@@ -21,46 +22,23 @@ export interface OrderInterface {
 
 export default function ConfirmacaoPage() {
 
-    const [order, setOrder] = React.useState<OrderInterface>(
-        {
-            address: {},
-            itens: [],
-            paymentMethod: '',
-            total: 0
-        }
-    );
-    React.useEffect( () => {
-        const order = window.localStorage.getItem( 'pre-order' )
-        if ( order ) {
-
-            const parsedOrder = JSON.parse( order );
-            setOrder( parsedOrder );
-        }
-    }, [] );
-
-
-    async function handleSendOrder() {
-
-        const message = `Olá gostaria de fazer um pedido dos seguintes itens: \n\n${order.itens.map( ( item: any ) => `🍽️ ${item.name} - ${( item.price.size ).toUpperCase()}` ).join( '\n' )}\n\n🏡 Endereço: ${order.address.street}, ${order.address.number} - ${order.address.complement}\n${order.address.neighborhood} - ${order.address.city} - ${order.address.uf}\n\n💰 Total: ${order.total.toLocaleString( 'pt-br', { style: 'currency', currency: 'BRL' } )} \nForma de pagamento: ${order.paymentMethod} \n\nObrigado!`
-
-        window.localStorage.removeItem( 'cart' );
-        window.localStorage.removeItem( 'order' );
-        
-        const url = `https://api.whatsapp.com/send?phone=+5522997759060&text=${encodeURIComponent( message )}`
-        window.open( url, "_blank" );
-
-    }
+    const { handleSendOrder } = useConfirmacao()
 
     return (
         <Wrapper>
-            <div className="w-full mt-32 min-h-[calc(100vh-400px)]">
-                <h1 className="text-4xl font-semibold text-neutral-600">Parabéns, Pedido realizado!</h1>
-                <h1 className="text-base font-light text-neutral-600">Agora é só clicar no botão à baixo para enviar o seu pedido via <span className="text-emerald-500 font-semibold">WhatsApp</span></h1>
+            <div className="w-full mt-32 min-h-[calc(100vh-400px)] max-sm:min-h-[300px] items-center justify-start flex flex-col max-xl:px-2">
+                <h1 className="text-4xl font-semibold text-neutral-600 max-sm:text-2xl text-center">Parabéns, Pedido realizado!</h1>
+                <h1 className="text-base font-light text-neutral-600 text-center">Agora é só clicar no botão à baixo para enviar o seu pedido via <span className="text-emerald-500 font-semibold">WhatsApp</span>
+                </h1>
                 <button
-                    onClick={handleSendOrder}
-                    className="p-4 flex items-center gap-4 border rounded-lg mt-4 bg-roxo/80 text-white border-roxo/40 hover:bg-roxo/70 transition-all">
+                    onClick={() => handleSendOrder()}
+                    className="p-4 max-sm:p-2 flex items-center justify-center max-sm:text-sm gap-4 w-full max-w-[350px] border rounded-lg mt-8 bg-roxo/80 text-white border-roxo/40 hover:bg-roxo/70 transition-all">
                     ENVIAR PEDIDO VIA WHATSAPP
-                    <WhatsappLogo size={30} weight="fill" className="fill-white" />
+                    <WhatsappLogo
+                        size={30}
+                        weight="fill"
+                        className="fill-white"
+                    />
                 </button>
             </div>
         </Wrapper>

@@ -1,12 +1,14 @@
 'use client'
 
 
+import { getCookie } from "@/actions/cookies/get-cookie";
 import { useBagFunctions } from "@/hooks/use-bag-functions";
 import { useCheckoutZod } from "@/hooks/use-checkout-zod";
 import { ProductToDomain } from "@/types/products";
 import { Basket } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import React from "react";
 
 
 interface ProductProps {
@@ -20,8 +22,6 @@ export default function Product( { product }: ProductProps ) {
     const size = ( searchParams.get( 'tamanho' ) ?? 'g' ) as 'p' | 'm' | 'g';
 
     const { handleAddToBag } = useCheckoutZod();
-
-
 
     return (
         <div className="rounded-lg group shadow-sm border hover:border-roxo/30 transition-all bg-neutral-50 flex flex-col items-center justify-start min-w-[230px] w-[308px] h-[408px] max-xms:min-w-0 max-xms:w-full py-4">

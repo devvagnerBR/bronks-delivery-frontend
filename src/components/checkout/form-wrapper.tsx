@@ -22,10 +22,12 @@ export default function FormWrapper() {
     return (
         <form
             onSubmit={handleSubmit( handleCheckoutForm )}
-            className="min-h-[calc(100vh-447px)] w-full mt-8 flex gap-8 items-start">
-            <div className="w-full mt-3 ">
-                <h1 className="font-bold">Complete seu pedido</h1>
-                <div className="p-8  rounded-lg mt-4 w-full max-w-[640px]">
+            className="min-h-[calc(100vh-447px)] w-full mt-8 flex gap-8 items-start max-xl:flex-col">
+            <div
+                id="FORM ADDRESS"
+                className="w-full mt-3">
+                <h1 className="font-bold max-lg:pl-8">Complete seu pedido</h1>
+                <div className="p-8 max-md:p-4  rounded-lg mt-4 w-full max-w-[640px] max-lg:max-w-none">
 
                     <header className="flex flex-col ">
                         <div className="flex flex-col gap-2 w-full ">
@@ -57,7 +59,7 @@ export default function FormWrapper() {
 
                                     type="text"
                                 />
-                                <div className="flex gap-4">
+                                <div className="flex gap-4 max-sm:flex-col">
                                     <input
                                         className="bg-neutral-200/40 border w-full  border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
                                         type="text"
@@ -72,7 +74,7 @@ export default function FormWrapper() {
 
                                     />
                                 </div>
-                                <div className="flex gap-4 w-full">
+                                <div className="flex gap-4 w-full max-lg:flex-col ">
                                     <input
                                         disabled
                                         className="bg-neutral-200/40 border w-full border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
@@ -83,14 +85,14 @@ export default function FormWrapper() {
                                     />
                                     <input
                                         disabled
-                                        className="bg-neutral-200/40 border w-[790px] border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
+                                        className="bg-neutral-200/40 border w-[790px] max-lg:w-full border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
                                         placeholder="Cidade"
                                         type="text"
                                         {...register( 'city' )}
                                     />
                                     <input
                                         disabled
-                                        className="bg-neutral-200/40 border w-[60px]  border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
+                                        className="bg-neutral-200/40 border w-[60px] max-lg:w-full border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
                                         placeholder="UF"
                                         type="text"
                                         {...register( 'uf' )}
@@ -102,15 +104,15 @@ export default function FormWrapper() {
                     </header>
                 </div>
 
-                <div className=" bg-neutral-100 rounded-lg mt-4 p-8">
-                    <div className="flex gap-2">
-                        <CurrencyDollarSimple className="fill-roxo" size={22} />
+                <div className=" bg-neutral-100 rounded-lg mt-4 p-8 max-md:p-4 max-xl:mx-4">
+                    <div className="flex gap-2 ">
+                        <CurrencyDollarSimple className="fill-roxo shrink-0" size={22} />
                         <div>
                             <h2 className="">Pagamento</h2>
                             <p className="text-sm text-neutral-500">O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
                         </div>
                     </div>
-                    <div className=" bg-neutral-100 flex gap-2 rounded-lg mt-8 w-full">
+                    <div className=" bg-neutral-100 flex max-md:flex-col gap-2 rounded-lg mt-8 w-full">
                         <div
                             onClick={() => handlePaymentMethodChange( 'cartão de crédito' )}
                             className={`flex ${paymentMethod === 'cartão de crédito' && 'bg-roxo/20 border border-roxo/30'} gap-2 w-full bg-neutral-200 rounded-lg py-4 px-2 items-center justify-center cursor-pointer hover:border-roxo/30  transition-all border hover:bg-roxo/20`}>
@@ -141,10 +143,12 @@ export default function FormWrapper() {
                 </div>
             </div>
 
-            <div className="w-full ">
+            <div
+                id="CART ITENS"
+                className="w-full p-4">
                 <h1 className="font-bold">Seus itens selecionados</h1>
                 {/* <BagWrapper /> */}
-                <div className="p-8 flex flex-col gap-4 bg-neutral-100 rounded-lg mt-4 pr-4">
+                <div className="p-8 max-md:p-2 flex flex-col gap-4 bg-neutral-100 rounded-lg mt-4 pr-4">
                     <div className={` ${itensState.itens.length > 3 && "overflow-y-scroll overflow-x-hidden max-h-[322px]"}`}>
                         {itensState.itens && itensState.itens.map( ( item: ProductToCart, index: number ) => <BagItem key={index} item={item} index={index} /> )}
                     </div>

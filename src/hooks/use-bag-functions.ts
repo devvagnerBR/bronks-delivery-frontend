@@ -56,6 +56,7 @@ export function useBagFunctions() {
         window.localStorage.setItem( 'cart', JSON.stringify( cartItems ) );
         await handleMountBag()
         setUpdateCart( ( prev ) => !prev )
+
         if ( cartItems.length === 0 ) await setCookie( 'cartIsEmpty', 'true' )
         if ( cartItems.length === 0 ) await setCookie( 'cartIsEmpty', 'true' )
 

@@ -12,7 +12,8 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        'xms': '400px'
+        'xms': '400px',
+        's500': '500px',
       },
       colors: {
         'roxo': "#8047F8"

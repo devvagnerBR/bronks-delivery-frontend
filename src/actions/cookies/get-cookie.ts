@@ -7,6 +7,6 @@ export async function getCookie( key: string ) {
 
     const cookie = cookies().get( key )?.value;
 
-    if ( !cookie ) return false;
+    if ( !cookie ) return 
     return cookie;
 }

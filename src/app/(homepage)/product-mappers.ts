@@ -5,7 +5,6 @@ import { ProductInterface } from "@/types/products";
 class ProductMappers {
 
     toDomain( product: ProductInterface ) {
-
         return {
             id: product.id,
             name: product.name,
