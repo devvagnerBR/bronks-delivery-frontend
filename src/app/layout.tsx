@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 const inter = Inter( { subsets: ["latin"] } );
 
 export const metadata: Metadata = {
-    title: "Marmitas da Maria",
+    title: "Bronks Delivery",
     description: "Delivery de marmitas caseiras em Rio das Ostras",
     icons: {
         icon: '/logo.png'
