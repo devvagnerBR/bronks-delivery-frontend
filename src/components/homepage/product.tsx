@@ -24,7 +24,7 @@ export default function Product( { product }: ProductProps ) {
     const { handleAddToBag } = useCheckoutZod();
 
     return (
-        <div className="rounded-lg group shadow-sm border hover:border-roxo/30 transition-all bg-neutral-50 flex flex-col items-center justify-start min-w-[230px] w-[308px] max-s500:w-full h-[408px] max-xms:min-w-0 max-xms:w-full py-4">
+        <div className="rounded-lg group shadow-sm border hover:border-roxo/30 transition-all bg-neutral-50 flex flex-col items-center justify-start min-w-[230px] w-[308px] max-s500:w-full h-fit max-xms:min-w-0 max-xms:w-full py-4">
             <Image
                 src="/quentinha.png"
                 width={600}
