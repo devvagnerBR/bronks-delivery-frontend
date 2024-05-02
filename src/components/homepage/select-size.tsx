@@ -30,7 +30,7 @@ export default function SelectSize() {
 
 
     return (
-        <label className="flex gap-2 flex-col items-end text-sm text-neutral-500">
+        <label className="flex max-xms:items-center max-xms:justify-center max-xms:mt-4 gap-2 flex-col items-end text-sm text-neutral-500">
             Tamanhos:
             <select
                 defaultValue={search!}

@@ -23,7 +23,7 @@ export default async function Header() {
                         style={{ width: 'auto', height: 'auto' }} />
                 </Link>
 
-                <nav className="flex gap-2 max-s500:gap-8 max-s500:w-full max-s500:items-center max-s500:justify-center px-2">
+                <nav className="flex gap-2 max-s500:gap-4 max-s500:w-full max-s500:items-center max-s500:justify-center px-2">
                     <Link
                         href="/?tamanho=g#menu"
                         className="p-3 max-s500:p-4 max-s500:flex max-s500:items-center max-s500:justify-center cursor-pointer bg-roxo/20 max-s500:w-full rounded-lg border border-transparent text-roxo hover:border hover:border-purple-300">
@@ -31,7 +31,7 @@ export default async function Header() {
                     </Link>
                     <Link
                         href="/checkout"
-                        className="bg-amber-200 cursor-pointer w-14 max-s500:w-full rounded-md flex items-center justify-center border border-transparent text-roxo hover:border hover:border-amber-400">
+                        className="bg-amber-200 cursor-pointer w-14 max-s500:h-14 max-s500:w-full rounded-md flex items-center justify-center border border-transparent text-roxo hover:border hover:border-amber-400">
                         <Basket weight="fill" className="fill-amber-600" size={22} />
                     </Link>
                 </nav>

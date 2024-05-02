@@ -23,7 +23,7 @@ export default async function Footer() {
                     </div>
                 </div>
             </div>
-            <p className="mb-2 text-neutral-50/50 text-sm max-sm:text-xs max-sm:text-center font-light">Desenvolvido por <span className="cursor-pointer text-neutral-50/80">devvagner</span> - 2024 - Todos os direitos reservados</p>
+            <p className="mb-2 text-neutral-50/50 text-sm max-sm:text-xs max-sm:text-center font-light">Desenvolvido por <a target="_blank" href="https://github.com/devvagnerbr" className="cursor-pointer text-neutral-50/80">devvagner</a> - 2024 - Todos os direitos reservados</p>
         </footer>
     );
 }

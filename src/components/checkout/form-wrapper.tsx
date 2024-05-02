@@ -4,6 +4,8 @@ import { useCheckoutZod } from "@/hooks/use-checkout-zod";
 import { Bank, CreditCard, CurrencyDollarSimple, MapPinLine, Money, PixLogo } from "@phosphor-icons/react";
 import { ProductToCart } from "@/types/products";
 import BagItem from "./bag-item";
+import { useBag } from "@/context/bag-context";
+import React from "react";
 
 
 export default function FormWrapper() {
@@ -17,8 +19,16 @@ export default function FormWrapper() {
         totalState,
         handlePaymentMethodChange,
         isSubmitting,
-        invalidCEPMessage
+        invalidCEPMessage,
+        updateStateFromLocalStorage
     } = useCheckoutZod();
+
+
+    const { updateCart } = useBag();
+
+    React.useEffect( () => {
+        updateStateFromLocalStorage();
+    }, [updateCart] );
 
     return (
         <form

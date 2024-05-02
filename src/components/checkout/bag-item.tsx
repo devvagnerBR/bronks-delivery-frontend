@@ -1,6 +1,7 @@
 'use client'
 
 
+import { useBag } from "@/context/bag-context";
 import { useCheckoutZod } from "@/hooks/use-checkout-zod";
 import { ProductToCart } from "@/types/products";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
@@ -19,6 +20,15 @@ export default function BagItem( { item, index }: ItemProps ) {
 
 
     const { handleRemoveFromBag } = useCheckoutZod();
+
+    const { setUpdateCart } = useBag()
+
+    async function handleRemoveItem( index: number ) {
+        await handleRemoveFromBag( index )
+        setUpdateCart( ( prev ) => !prev )
+    }
+
+
     return (
         <div className="flex max-s500:flex-col items-start gap-4 p-2 border-b pb-4">
 
@@ -40,7 +50,7 @@ export default function BagItem( { item, index }: ItemProps ) {
                     <div className="sm:hidden flex gap-2 items-center mt-4">
                         <h4 className="font-bold ">{item?.price?.price?.toLocaleString( 'pt-br', { style: 'currency', currency: 'BRL' } )}</h4>
                         <div
-                            onClick={() => handleRemoveFromBag( index )}
+                            onClick={() => handleRemoveItem( index )}
                             className="flex hover:border-roxo/10 border border-transparent cursor-pointer items-center gap-2 rounded-lg w-fit p-2 px-2 bg-neutral-200 ">
                             <Trash className="fill-roxo" />
 

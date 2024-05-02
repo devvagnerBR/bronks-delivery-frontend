@@ -3,7 +3,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { getCEP } from '@/actions/get-cep';
-import { useBag } from "@/context/bag-context";
 import { ProductToCart } from "@/types/products";
 import { useRouter } from "next/navigation";
 import { useBagFunctions } from "./use-bag-functions";
@@ -26,7 +25,6 @@ type checkoutData = z.infer<typeof checkoutFormSchema>
 export function useCheckoutZod() {
 
     const router = useRouter();
-    const { updateCart } = useBag();
     const { handleAddToBag, handleRemoveFromBag } = useBagFunctions()
 
     const [paymentMethod, setPaymentMethod] = React.useState<string>( 'cartão de crédito' )
@@ -50,6 +48,7 @@ export function useCheckoutZod() {
         watch,
         setValue,
         setFocus,
+        reset,
         formState: { errors, isSubmitting }
     } = useForm<checkoutData>( { resolver: zodResolver( checkoutFormSchema ) } )
 
@@ -85,7 +84,11 @@ export function useCheckoutZod() {
 
                 const response = await getCEP( watch( 'cep' ) )
 
-                if ( response.erro ) setInvalidCEPMessage( 'CEP inválido' )
+                if ( response.erro ) {
+                    setInvalidCEPMessage( 'CEP inválido' )
+                    reset()
+                }
+
                 setValue( 'street', response.logradouro )
                 setValue( 'neighborhood', response.bairro )
                 setValue( 'city', response.localidade )
@@ -118,9 +121,9 @@ export function useCheckoutZod() {
         setFocus( 'cep' )
     }, [setFocus] )
 
-    React.useEffect( () => {
-        updateStateFromLocalStorage();
-    }, [updateCart] );
+    // React.useEffect( () => {
+    //     updateStateFromLocalStorage();
+    // }, [updateCart] );
 
     return {
         register,
@@ -129,7 +132,7 @@ export function useCheckoutZod() {
         watch,
         handleAddToBag, handleRemoveFromBag,
         paymentMethod, setPaymentMethod,
-        updateCart,
+        // updateCart,
         itensState,
         totalState,
         updateStateFromLocalStorage,

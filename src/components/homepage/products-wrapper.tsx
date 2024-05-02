@@ -16,7 +16,7 @@ export default async function ProductsWrapper( { products }: ProductsWrapperProp
     return (
         <Wrapper>
             <div className="mt-16 flex flex-col gap-4 w-full" id="menu">
-                <div className="flex items-center justify-between">
+                <div className="flex max-xms:flex-col max-xms:justify-center items-center justify-between">
                     <h1 className="text-5xl font-bold max-sm:text-3xl max-sm:text-center">
                         Quentinhas<span className="text-roxo">.</span>
                     </h1>
