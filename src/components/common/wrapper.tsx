@@ -11,8 +11,6 @@ export default function Wrapper( { children }: React.PropsWithChildren ) {
         async function handleSetCart() {
 
             const cartIsEmpty = await getCookie( 'cartIsEmpty' );
-
-            console.log( cartIsEmpty )
             if ( typeof cartIsEmpty !== 'undefined' ) return
             await setCookie( 'cartIsEmpty', 'true' );
         }

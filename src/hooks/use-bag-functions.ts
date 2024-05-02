@@ -1,3 +1,4 @@
+import { getCookie } from "@/actions/cookies/get-cookie";
 import { setCookie } from "@/actions/cookies/set-cookie";
 import { useBag } from "@/context/bag-context";
 import { addItemToCartNotificationHome } from "@/libs/react-hot-toast";
@@ -36,6 +37,10 @@ export function useBagFunctions() {
 
         window.localStorage.setItem( 'cart', JSON.stringify( cartItems ) );
         await handleMountBag();
+
+        const cartIsEmpty = await getCookie( 'cartIsEmpty' );
+
+        if ( cartIsEmpty === 'false' ) return;
         await setCookie( 'cartIsEmpty', 'false' );
         await setCookie( 'cartIsEmpty', 'false' );
         await addItemToCartNotificationHome( product.name )

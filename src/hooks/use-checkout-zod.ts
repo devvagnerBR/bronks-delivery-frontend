@@ -32,6 +32,7 @@ export function useCheckoutZod() {
     const [paymentMethod, setPaymentMethod] = React.useState<string>( 'cartão de crédito' )
     const [itens, setItens] = React.useState<ProductToCart[]>( [] );
     const [total, setTotal] = React.useState<number>( 0 );
+    const [invalidCEPMessage, setInvalidCEPMessage] = React.useState<string | null>( '' );
 
     const itensState = {
         itens,
@@ -72,17 +73,19 @@ export function useCheckoutZod() {
     }
 
 
+
     React.useEffect( () => {
 
         setTimeout( () => {
 
             if ( !watch( 'cep' ) || watch( 'cep' ).length < 8 ) return;
+            setInvalidCEPMessage( '' )
 
             async function fetchCEP() {
 
                 const response = await getCEP( watch( 'cep' ) )
 
-                if ( response.erro ) return;
+                if ( response.erro ) setInvalidCEPMessage( 'CEP inválido' )
                 setValue( 'street', response.logradouro )
                 setValue( 'neighborhood', response.bairro )
                 setValue( 'city', response.localidade )
@@ -91,7 +94,7 @@ export function useCheckoutZod() {
 
             fetchCEP()
 
-        }, 400 )
+        }, 200 )
 
     }, [watch( 'cep' )] )
 
@@ -131,6 +134,7 @@ export function useCheckoutZod() {
         totalState,
         updateStateFromLocalStorage,
         handlePaymentMethodChange,
-        isSubmitting
+        isSubmitting,
+        invalidCEPMessage
     }
 }

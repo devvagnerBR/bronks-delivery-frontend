@@ -15,7 +15,7 @@ export default async function Home( { searchParams }: HomeProps ) {
 
     return (
 
-        <div className="w-full mt-32 max-md:mt-16">
+        <div className="w-full mt-32 max-md:mt-8">
             <Hero />
             <Suspense>
                 <ProductsWrapper products={products} />

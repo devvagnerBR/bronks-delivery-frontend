@@ -10,9 +10,9 @@ export default async function Hero() {
     return (
         <Wrapper>
             <div className="w-full max-xms:items-center max-xms:flex max-xms:flex-col">
-                <p className="text-6xl font-bold max-w-[950px] max-md:max-w-none  max-md:text-4xl max-xms:text-center max-xms:text-3xl">Quentinhas saborosas e prontas para mudar o seu dia<span className="text-roxo">!</span></p>
-
-
+                <p className="text-6xl font-bold max-w-[950px] max-md:max-w-none max-lg:text-center max-md:text-4xl max-xms:text-center max-xms:text-3xl max-xms:px-4">
+                    Quentinhas saborosas e prontas para mudar o seu dia<span className="text-roxo">!</span>
+                </p>
                 <div className="mt-16 max-sm:mt-8 max-w-[750px] flex flex-col gap-4 max-sm:w-full max-xms:w-[90%]">
 
                     <div className="flex gap-4 w-full max-xms:flex-col ">

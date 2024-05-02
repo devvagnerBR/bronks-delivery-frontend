@@ -16,7 +16,8 @@ export default function FormWrapper() {
         itensState,
         totalState,
         handlePaymentMethodChange,
-        isSubmitting
+        isSubmitting,
+        invalidCEPMessage
     } = useCheckoutZod();
 
     return (
@@ -40,17 +41,20 @@ export default function FormWrapper() {
                             </div>
                             <div
                                 className="mt-4 flex flex-col gap-4 w-full">
-                                <input
-                                    id="cep"
-                                    className="bg-neutral-200/40 border border-neutral-200 h-11 max-w-52 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm
-                                    focus:border-roxo/30"
-                                    placeholder="CEP"
-                                    maxLength={8}
-                                    required
-                                    {...register( 'cep' )}
-                                    type="text"
+                                <div className="flex items-center gap-4">
 
-                                />
+                                    <input
+                                        id="cep"
+                                        className={`bg-neutral-200/40 border  border-neutral-200 h-11 max-w-52 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm focus:border-roxo/30 ${invalidCEPMessage && 'border-red-400  focus:border-red-400'}`}
+                                        placeholder="CEP"
+                                        maxLength={8}
+                                        required
+                                        {...register( 'cep' )}
+                                        type="text"
+
+                                    />
+                                    {invalidCEPMessage && <p className="text-red-400 text-sm">{invalidCEPMessage}</p>}
+                                </div>
                                 <input
                                     disabled
                                     className="bg-neutral-200/40 border w-full max-w-[570px] border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
@@ -67,6 +71,7 @@ export default function FormWrapper() {
                                         {...register( 'number' )}
                                     />
                                     <input
+                                        required
                                         className="bg-neutral-200/40 border w-full  border-neutral-200 h-11 rounded-lg outline-none pl-4 text-neutral-500 placeholder:text-neutral-500 placeholder:text-sm text-sm disabled:bg-neutral-200 disabled:placeholder:text-neutral-500/50"
                                         placeholder="Complemento"
                                         type="text"

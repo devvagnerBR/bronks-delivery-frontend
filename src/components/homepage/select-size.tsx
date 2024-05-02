@@ -1,6 +1,7 @@
 'use client'
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import React from "react"
 
 
 
@@ -10,7 +11,8 @@ import { useRouter, useSearchParams } from "next/navigation"
 export default function SelectSize() {
 
     const searchParams = useSearchParams()
-
+    const pathName = usePathname()
+    
     const search = searchParams.get( 'tamanho' )
 
     const router = useRouter()
@@ -20,6 +22,11 @@ export default function SelectSize() {
         )
     }
 
+
+    React.useEffect( () => {
+        if ( pathName === '/' ) return
+        window.location.href = '/'
+    }, [] )
 
 
     return (

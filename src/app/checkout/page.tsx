@@ -1,5 +1,5 @@
 import FormWrapper from "@/components/checkout/form-wrapper";
-import { delay } from "@/utils/delay";
+
 
 
 export default async function CheckoutPage() {
